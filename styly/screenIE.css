@@ -1,0 +1,33 @@
+p {
+	clear: left;
+}
+#obsah {
+	width: "577px";
+}
+#galerie {
+	width: 576px;
+	display: block;
+	float: left;
+	margin-left: -10px;
+	margin-bottom: "-10px";
+}
+#nahled {
+	display: block;
+	float: left;
+	margin-left: -10px;
+}
+#obsahIndex {
+	width: "577px";
+}
+#galerieIndex {
+	width: 576px;
+	display: block;
+	float: left;
+	margin-left: -10px;
+}
+.height272 {
+	height: "282px";
+}
+.height84 {
+	height: "94px";
+}

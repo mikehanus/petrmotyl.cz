@@ -1,0 +1,39 @@
+body {
+	font-family: "Times New Roman", serif;
+	font-size: 14px;
+}
+h1 {
+	font-family: Verdana, sans-serif;
+	font-size: 18px;
+	text-decoration: none;
+	border-bottom: 1px solid Black;
+	color: Black;
+	margin-bottom: 20px;
+}
+h2 {
+	display: none;
+}
+h3 {
+	font-family: Verdana, sans-serif;
+	text-decoration: underline;
+	font-size: 12px;
+}
+a {
+	color: Black;
+	text-decoration: none;
+}
+.popisek a {
+	display: none;
+}
+hr {
+	display: none;
+}
+#galerie, #nahled {
+	display: none;
+}
+#left {
+	display: none;
+}
+#foot {
+	border-top: 1px solid Black;
+}

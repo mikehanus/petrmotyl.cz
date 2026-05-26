@@ -260,7 +260,20 @@ a:hover {
 }
 
 .noscreen {
-	display: none !important;
+	display: block !important;
+	font-size: 1.2rem;
+	color: #999;
+	margin-top: 50px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 8px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+#obsahIndex .noscreen:first-child {
+	margin-top: 0;
 }
 
 /* Book Backgrounds - Small Covers (Sprites) */
@@ -345,3 +358,16 @@ a:hover {
 	#left li { text-align: center; }
 	#obsah, #obsahIndex { padding: 20px; }
 }
+
+#dobrodruzstviAlfonse span { background: url(../grafika/obalky_male/dobrodruzstvi_alfonse.png) no-repeat center center / contain; }
+#zivotADiloWernische span { background: url(../grafika/obalky_male/zivot_a_dilo_wernische.jpg) no-repeat center center / contain; }
+#ahojMarku span { background: url(../grafika/obalky_male/ahoj_marku.jpg) no-repeat center center / contain; }
+#edenJePryc span { background: url(../grafika/obalky_male/eden_je_pryc.png) no-repeat center center / contain; }
+#pribehOOhni span { background: url(../grafika/obalky_male/pribeh_o_ohni.jpg) no-repeat center center / contain; }
+
+#dobrodruzstviAlfonse a:hover span, #zivotADiloWernische a:hover span, #ahojMarku a:hover span, #edenJePryc a:hover span, #pribehOOhni a:hover span {
+	background-position: center center !important;
+}
+
+#skoricoveKramy span { background: url(../grafika/obalky_male/skoricove_kramy.png) no-repeat center center / contain; }
+#skoricoveKramy a:hover span { background-position: center center !important; }

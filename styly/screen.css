@@ -1,1272 +1,347 @@
 * {
 	margin: 0;
 	padding: 0;
+	box-sizing: border-box;
 }
+
 body {
-	background: White;
-	color: #999999;
+	background: #f9f9f9;
+	color: #333;
 	text-align: center;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	font: 0.7em Verdana, sans-serif;
+	margin: 0;
+	padding: 40px 20px;
+	font: 1.1em / 1.6 "Segoe UI", Verdana, sans-serif;
 }
-h1, h1 span {
-	width: 755px;
-	height: 30px;
-	overflow: hidden;
-	position: relative;
-	left: 0;
-	top: 0;
-	z-index: 0;
-	cursor: pointer;
-	cursor: hand;
-	border-bottom: 1px dashed #999999;
-}
-h1 span {
-	display: block;
-	z-index: 1;
-	position: absolute;
-	background-image: url(../grafika/layout/bibliografie.gif);
-	background-repeat: no-repeat;
-}
-h2 {
-	font-size: 170%;
-	color: #000000;
-	margin-left: 10px;
-}
-h3 {
-	color: #000000;
-	font-weight: bold;
-	font-size: 1.1em;
-	margin-left: 10px;
-	margin-top: 10px;
-}
-p {
-	margin-left: 10px;
-	margin-top: 10px;
-	line-height: 1.4;
-	padding-bottom: 10px;
-}
-a:link, a:visited {
-	color: #999999;
-	text-decoration: none;
-}
-a:hover {
-	color: #000;
-	text-decoration: underline;
-}
-hr {
-	display: none;
-}
+
 #main {
-	width: 755px;
+	width: 100%;
+	max-width: 1200px;
 	margin: 0 auto;
 	text-align: left;
 	background-color: White;
+	box-shadow: 0 0 20px rgba(0,0,0,0.05);
+	border-radius: 8px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
 }
-#left {
-	width: 178px;
-	height: 100%;
-	float: left;
-	text-transform: uppercase;
+
+/* Header */
+h1 {
+	width: 100%;
+	height: 80px;
+	overflow: hidden;
 	position: relative;
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	margin: 0;
 }
+
+h1 a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	text-decoration: none;
+	font-size: 0; /* Hide the text completely */
+	color: transparent;
+	position: relative;
+	z-index: 2;
+}
+
+h1 span {
+	display: block;
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	width: 906px; /* 755 * 1.2 */
+	height: 50px; /* Increased to accommodate scaled logo */
+	z-index: 3;
+	background: url(../grafika/layout/bibliografie.gif) no-repeat left top;
+	background-size: contain; /* Scale the logo image to fill the span */
+	pointer-events: none;
+}
+
+/* Layout wrapper */
+.content-wrapper {
+	display: flex;
+	width: 100%;
+}
+
+/* sidebar */
+#left {
+	width: 260px;
+	background: #fcfcfc;
+	border-right: 1px solid #eee;
+	padding: 30px 0;
+	flex-shrink: 0;
+}
+
+#menu {
+	padding: 0;
+}
+
 #left li {
 	list-style: none;
-	padding-bottom: 10px;
 	text-align: right;
+	padding: 0;
+	margin: 0;
 }
-#menu {
-	padding-top: 11px;
-	padding-right: 10px;
+
+#left li a {
+	display: block;
+	padding: 12px 25px;
+	color: #666;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: 1px;
+	transition: all 0.2s;
 }
-#obsah {
-	float: right;
-	width: 576px;
-	height: 100%;
-	position: relative;
-	border-left: 1px dashed #999999;
-	padding-top: 10px;
-	padding-bottom: 10px;
+
+#left li a:hover {
+	color: #000;
+	background: #f0f0f0;
+	text-decoration: none;
 }
-#obsah a:link, #obsah a:visited {
+
+/* obsah */
+#obsah, #obsahIndex {
+	flex-grow: 1;
+	padding: 40px;
+	min-height: 600px;
+}
+
+h2 {
+	font-size: 2.2rem;
+	color: #000;
+	margin-bottom: 30px;
+	line-height: 1.2;
+}
+
+h3 {
+	color: #000;
+	font-weight: bold;
+	font-size: 1.4rem;
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+p {
+	margin-bottom: 20px;
+	line-height: 1.8;
+	color: #444;
+}
+
+.cernyText {
+	color: #222;
+}
+
+a:link, a:visited {
+	color: #0066FF;
 	text-decoration: underline;
 }
-#obsahIndex {
-	float: right;
-	width: 576px;
-	height: 100%;
-	position: relative;
-	border-left: 1px dashed #999999;
-	padding-bottom: 10px;
+
+a:hover {
+	color: #000;
+	text-decoration: none;
 }
-#foot {
-	position: relative;
-	clear: both;
-	width: 755px;
-	border-top: 1px dashed #999999;
-}
-#copy {
-	text-align: left;
-	margin-left: 178px;
-	border-left: 1px dashed #999999;
-	padding-left: 10px;
-	margin-top: 0px;
-	padding-top: 5px;
-}
-#galerie {
-	display: block;
-	float: left;
-	width: 577px;
-}
-#galerie a, #galerie span {
-	display: block;
-	width: 84px;
-	height: 84px;
-	overflow: hidden;
-	z-index: 0;
-	position: relative;
-	left: 0px;
-	top: 0px;
-}
-#galerie span {
-	z-index: 1;
-	cursor: pointer;
-	cursor: hand;
-	position: absolute;
-}
-#galerie a:link, #galerie a:visited {
- 	color: #000000;
- 	text-decoration: underline;
-}
-#galerie a:hover {
- 	color: #FFFFFF;
- 	background: #0066FF;
-}
-#galerie li {
-	float: left;
+
+/* Galleries */
+#galerie, #galerieIndex {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+	gap: 15px;
+	width: 100%;
+	margin-bottom: 40px;
 	list-style: none;
-	position: relative;
-	margin-bottom: 10px;
-	margin-left: 10px;
-	margin-top: 10px;
 }
-#galerieIndex {
-	display: block;
-	float: left;
-	width: 577px;
-}
-#galerieIndex a, #galerieIndex span {
-	display: block;
-	width: 84px;
-	height: 84px;
-	overflow: hidden;
-	z-index: 0;
-	position: relative;
-	left: 0px;
-	top: 0px;
-}
-#galerieIndex span {
-	z-index: 1;
-	cursor: pointer;
-	cursor: hand;
-	position: absolute;
-}
-#galerieIndex a:link, #galerieIndex a:visited {
- 	color: #000000;
- 	text-decoration: underline;
-}
-#galerieIndex a:hover {
- 	color: #FFFFFF;
- 	background: #0066FF;
-}
-#galerieIndex li {
-	float: left;
-	list-style: none;
-	position: relative;
-	margin-left: 10px;
-	margin-top: 10px;
-}
-#nahled {
-	display: block;
-	float: left;
-	width: 94px;
-}
-#nahled a, #nahled span {
-	display: block;
-	width: 84px;
-	height: 84px;
-	overflow: hidden;
-	z-index: 0;
-	position: relative;
-	left: 0px;
-	top: 0px;
-}
-#nahled span {
-	z-index: 1;
-	cursor: pointer;
-	cursor: hand;
-	position: absolute;
-}
-#nahled a:link, #nahled a:visited {
- 	color: #000000;
- 	text-decoration: underline;
-}
-#nahled a:hover {
- 	color: #FFFFFF;
- 	background: #0066FF;
-}
-#nahled li {
-	float: left;
-	list-style: none;
-	position: relative;
-	margin-top: 10px;
-	margin-left: 10px;
-	margin-bottom: 10px;
-}
-#window {
+
+#galerie li, #galerieIndex li {
 	margin: 0;
 	padding: 0;
-	text-align: left;
-}
-#vSitu span {
-	background-image: url(../grafika/obalky_male/v-situ.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#vSitu span.active {
-	background-image: url(../grafika/obalky_male/v-situ.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#vSitu a:hover span {
-	background-image: url(../grafika/obalky_male/v-situ.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#mikado span {
-	background-image: url(../grafika/obalky_male/mikado.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#mikado span.active {
-	background-image: url(../grafika/obalky_male/mikado.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#mikado a:hover span {
-	background-image: url(../grafika/obalky_male/mikado.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#tenkratUTerfleru span {
-	background-image: url(../grafika/obalky_male/tenkrat-u-terfleru.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#tenkratUTerfleru span.active {
-	background-image: url(../grafika/obalky_male/tenkrat-u-terfleru.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#tenkratUTerfleru a:hover span {
-	background-image: url(../grafika/obalky_male/tenkrat-u-terfleru.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#borovyHaj span {
-	background-image: url(../grafika/obalky_male/borovy-haj.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#borovyHaj span.active {
-	background-image: url(../grafika/obalky_male/borovy-haj.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#borovyHaj a:hover span {
-	background-image: url(../grafika/obalky_male/borovy-haj.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#satnaAKlaster span {
-	background-image: url(../grafika/obalky_male/satna-a-klaster.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#satnaAKlaster span.active {
-	background-image: url(../grafika/obalky_male/satna-a-klaster.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#satnaAKlaster a:hover span {
-	background-image: url(../grafika/obalky_male/satna-a-klaster.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#uReky span {
-	background-image: url(../grafika/obalky_male/u-reky.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#uReky span.active {
-	background-image: url(../grafika/obalky_male/u-reky.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#uReky a:hover span {
-	background-image: url(../grafika/obalky_male/u-reky.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#pribehRytireVitka span {
-	background-image: url(../grafika/obalky_male/rytir-vitek.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#pribehRytireVitka span.active {
-	background-image: url(../grafika/obalky_male/rytir-vitek.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#pribehRytireVitka a:hover span {
-	background-image: url(../grafika/obalky_male/rytir-vitek.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#sBrasnouProPastyre span {
-	background-image: url(../grafika/obalky_male/s-brasnou.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#sBrasnouProPastyre span.active {
-	background-image: url(../grafika/obalky_male/s-brasnou.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#sBrasnouProPastyre a:hover span {
-	background-image: url(../grafika/obalky_male/s-brasnou.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#toBySeMiLibilo span {
-	background-image: url(../grafika/obalky_male/to-by-se-mi-libilo.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#toBySeMiLibilo span.active {
-	background-image: url(../grafika/obalky_male/to-by-se-mi-libilo.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#toBySeMiLibilo a:hover span {
-	background-image: url(../grafika/obalky_male/to-by-se-mi-libilo.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#tenVeliky span {
-	background-image: url(../grafika/obalky_male/ten_veliky.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#tenVeliky span.active {
-	background-image: url(../grafika/obalky_male/ten_veliky.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#tenVeliky a:hover span {
-	background-image: url(../grafika/obalky_male/ten_veliky.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#pilka span {
-	background-image: url(../grafika/obalky_male/doktor-pilka-si-kope-hrob.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#pilka span.active {
-	background-image: url(../grafika/obalky_male/doktor-pilka-si-kope-hrob.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#pilka a:hover span {
-	background-image: url(../grafika/obalky_male/doktor-pilka-si-kope-hrob.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#silenyFridrich span {
-	background-image: url(../grafika/obalky_male/sileny_fridrich.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#silenyFridrich span.active {
-	background-image: url(../grafika/obalky_male/sileny_fridrich.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#silenyFridrich a:hover span {
-	background-image: url(../grafika/obalky_male/sileny_fridrich.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#piva span {
-	background-image: url(../grafika/obalky_male/2000000piv.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#piva span.active {
-	background-image: url(../grafika/obalky_male/2000000piv.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#piva a:hover span {
-	background-image: url(../grafika/obalky_male/2000000piv.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#jazykemHaldy span {
-	background-image: url(../grafika/obalky_male/jazykem_haldy.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#jazykemHaldy span.active {
-	background-image: url(../grafika/obalky_male/jazykem_haldy.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#jazykemHaldy a:hover span {
-	background-image: url(../grafika/obalky_male/jazykem_haldy.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#jazykemHaldy2 span {
-	background-image: url(../grafika/obalky_male/jazykem_haldy2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#jazykemHaldy2 span.active {
-	background-image: url(../grafika/obalky_male/jazykem_haldy2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#jazykemHaldy2 a:hover span {
-	background-image: url(../grafika/obalky_male/jazykem_haldy2.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#cernaPena span {
-	background-image: url(../grafika/obalky_male/cerna_pena.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cernaPena span.active {
-	background-image: url(../grafika/obalky_male/cerna_pena.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cernaPena a:hover span {
-	background-image: url(../grafika/obalky_male/cerna_pena.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#cernaPena2 span {
-	background-image: url(../grafika/obalky_male/cerna_pena2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cernaPena2 span.active {
-	background-image: url(../grafika/obalky_male/cerna_pena2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cernaPena2 a:hover span {
-	background-image: url(../grafika/obalky_male/cerna_pena2.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#spratek span {
-	background-image: url(../grafika/obalky_male/spratek.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#spratek span.active {
-	background-image: url(../grafika/obalky_male/spratek.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#spratek a:hover span {
-	background-image: url(../grafika/obalky_male/spratek.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#perletovyDum span {
-	background-image: url(../grafika/obalky_male/perletovy_dum.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#perletovyDum span.active {
-	background-image: url(../grafika/obalky_male/perletovy_dum.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#perletovyDum a:hover span {
-	background-image: url(../grafika/obalky_male/perletovy_dum.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#halec span {
-	background-image: url(../grafika/obalky_male/halec.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#halec span.active {
-	background-image: url(../grafika/obalky_male/halec.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#halec a:hover span {
-	background-image: url(../grafika/obalky_male/halec.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#pohlednice span {
-	background-image: url(../grafika/obalky_male/v_srdci.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#pohlednice span.active {
-	background-image: url(../grafika/obalky_male/v_srdci.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#pohlednice a:hover span {
-	background-image: url(../grafika/obalky_male/v_srdci.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#lahve span {
-	background-image: url(../grafika/obalky_male/lahve.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#lahve span.active {
-	background-image: url(../grafika/obalky_male/lahve.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#lahve a:hover span {
-	background-image: url(../grafika/obalky_male/lahve.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#petrolej span {
-	background-image: url(../grafika/obalky_male/petrolej.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#petrolej span.active {
-	background-image: url(../grafika/obalky_male/petrolej.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#petrolej a:hover span {
-	background-image: url(../grafika/obalky_male/petrolej.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#poklad span {
-	background-image: url(../grafika/obalky_male/poklad.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#poklad span.active {
-	background-image: url(../grafika/obalky_male/poklad.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#poklad a:hover span {
-	background-image: url(../grafika/obalky_male/poklad.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#vymrstiSe span {
-	background-image: url(../grafika/obalky_male/vymrsti_se_hned.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#vymrstiSe span.active {
-	background-image: url(../grafika/obalky_male/vymrsti_se_hned.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#vymrstiSe a:hover span {
-	background-image: url(../grafika/obalky_male/vymrsti_se_hned.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#majak span {
-	background-image: url(../grafika/obalky_male/majak.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#majak span.active {
-	background-image: url(../grafika/obalky_male/majak.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#majak a:hover span {
-	background-image: url(../grafika/obalky_male/majak.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#potmechut span {
-	background-image: url(../grafika/obalky_male/potmechut.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#potmechut span.active {
-	background-image: url(../grafika/obalky_male/potmechut.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#potmechut a:hover span {
-	background-image: url(../grafika/obalky_male/potmechut.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#uhli span {
-	background-image: url(../grafika/obalky_male/uhli.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#uhli span.active {
-	background-image: url(../grafika/obalky_male/uhli.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#uhli a:hover span {
-	background-image: url(../grafika/obalky_male/uhli.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#chaloupka span {
-	background-image: url(../grafika/obalky_male/pernikova-chaloupka.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#chaloupka span.active {
-	background-image: url(../grafika/obalky_male/pernikova-chaloupka.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#chaloupka a:hover span {
-	background-image: url(../grafika/obalky_male/pernikova-chaloupka.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#potok span {
-	background-image: url(../grafika/obalky_male/zlaty-potok.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#potok span.active {
-	background-image: url(../grafika/obalky_male/zlaty-potok.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#potok a:hover span {
-	background-image: url(../grafika/obalky_male/zlaty-potok.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#plyn span {
-	background-image: url(../grafika/obalky_male/plyn.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#plyn span.active {
-	background-image: url(../grafika/obalky_male/plyn.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#plyn a:hover span {
-	background-image: url(../grafika/obalky_male/plyn.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#mestecko span {
-	background-image: url(../grafika/obalky_male/mestecko.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#mestecko span.active {
-	background-image: url(../grafika/obalky_male/mestecko.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#mestecko a:hover span {
-	background-image: url(../grafika/obalky_male/mestecko.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#dar span {
-	background-image: url(../grafika/obalky_male/dar-luzru.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#dar span.active {
-	background-image: url(../grafika/obalky_male/dar-luzru.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#dar a:hover span {
-	background-image: url(../grafika/obalky_male/dar-luzru.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#narozeniny span {
-	background-image: url(../grafika/obalky_male/k-narozeninam.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#narozeniny span.active {
-	background-image: url(../grafika/obalky_male/k-narozeninam.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#narozeniny a:hover span {
-	background-image: url(../grafika/obalky_male/k-narozeninam.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
 }
 
-#pribehy span {
-	background-image: url(../grafika/obalky_male/nektere-pribehy.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#pribehy span.active {
-	background-image: url(../grafika/obalky_male/nektere-pribehy.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#pribehy a:hover span {
-	background-image: url(../grafika/obalky_male/nektere-pribehy.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
+#galerie a, #galerieIndex a, #nahled a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100px;
+	height: 100px;
+	position: relative;
+	border: 1px solid #eee;
+	border-radius: 4px;
+	overflow: hidden;
+	transition: transform 0.2s, box-shadow 0.2s;
+	font-size: 0;
+	color: transparent;
+	text-decoration: none;
 }
 
-#rybicka span {
-	background-image: url(../grafika/obalky_male/rybicka.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#rybicka span.active {
-	background-image: url(../grafika/obalky_male/rybicka.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#rybicka a:hover span {
-	background-image: url(../grafika/obalky_male/rybicka.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#rybicka2 span {
-	background-image: url(../grafika/obalky_male/rybicka-planek.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#rybicka2 span.active {
-	background-image: url(../grafika/obalky_male/rybicka-planek.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#rybicka2 a:hover span {
-	background-image: url(../grafika/obalky_male/rybicka-planek.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#prokleti span {
-	background-image: url(../grafika/obalky_male/prokleti_na_basniky.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#prokleti span.active {
-	background-image: url(../grafika/obalky_male/prokleti_na_basniky.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#prokleti a:hover span {
-	background-image: url(../grafika/obalky_male/prokleti_na_basniky.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#prokleti2 span {
-	background-image: url(../grafika/obalky_male/prokleti_na_basniky2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#prokleti2 span.active {
-	background-image: url(../grafika/obalky_male/prokleti_na_basniky2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#prokleti2 a:hover span {
-	background-image: url(../grafika/obalky_male/prokleti_na_basniky2.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#sedm span {
-	background-image: url(../grafika/obalky_male/sedm.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#sedm span.active {
-	background-image: url(../grafika/obalky_male/sedm.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#sedm a:hover span {
-	background-image: url(../grafika/obalky_male/sedm.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#belgie span {
-	background-image: url(../grafika/obalky_male/antologie_belgie.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#belgie span.active {
-	background-image: url(../grafika/obalky_male/antologie_belgie.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#belgie a:hover span {
-	background-image: url(../grafika/obalky_male/antologie_belgie.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#francie span {
-	background-image: url(../grafika/obalky_male/antologie_francie.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#francie span.active {
-	background-image: url(../grafika/obalky_male/antologie_francie.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#francie a:hover span {
-	background-image: url(../grafika/obalky_male/antologie_francie.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#elias span {
-	background-image: url(../grafika/obalky_male/elias.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#elias span.active {
-	background-image: url(../grafika/obalky_male/elias.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#elias a:hover span {
-	background-image: url(../grafika/obalky_male/elias.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#elias2 span {
-	background-image: url(../grafika/obalky_male/elias2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#elias2 span.active {
-	background-image: url(../grafika/obalky_male/elias2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#elias2 a:hover span {
-	background-image: url(../grafika/obalky_male/elias2.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#rusko span {
-	background-image: url(../grafika/obalky_male/rusko.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#rusko span.active {
-	background-image: url(../grafika/obalky_male/rusko.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#rusko a:hover span {
-	background-image: url(../grafika/obalky_male/rusko.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#modryKvet span {
-	background-image: url(../grafika/obalky_male/modry_kvet.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#modryKvet span.active {
-	background-image: url(../grafika/obalky_male/modry_kvet.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#modryKvet a:hover span {
-	background-image: url(../grafika/obalky_male/modry_kvet.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#sojky span {
-	background-image: url(../grafika/obalky_male/sojky_v_hlave.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#sojky span.active {
-	background-image: url(../grafika/obalky_male/sojky_v_hlave.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#sojky a:hover span {
-	background-image: url(../grafika/obalky_male/sojky_v_hlave.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#cmelak span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelak span.active {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelak a:hover span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#cmelak2 span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelak2 span.active {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelak2 a:hover span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet2.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#cmelakCz span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelakCz span.active {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelakCz a:hover span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#cmelakCz2 span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelakCz2 span.active {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelakCz2 a:hover span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz2.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#cmelakCz3 span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz3.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelakCz3 span.active {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz3.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cmelakCz3 a:hover span {
-	background-image: url(../grafika/obalky_male/cmelak_a_svet_cz3.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#portret1 span {
-	background-image: url(../grafika/obalky_male/portret.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret1 span.active {
-	background-image: url(../grafika/obalky_male/portret.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret1 a:hover span {
-	background-image: url(../grafika/obalky_male/portret.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#portret2 span {
-	background-image: url(../grafika/obalky_male/portret2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret2 span.active {
-	background-image: url(../grafika/obalky_male/portret2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret2 a:hover span {
-	background-image: url(../grafika/obalky_male/portret2.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#portret3 span {
-	background-image: url(../grafika/obalky_male/portret3.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret3 span.active {
-	background-image: url(../grafika/obalky_male/portret3.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret3 a:hover span {
-	background-image: url(../grafika/obalky_male/portret3.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#portret4 span {
-	background-image: url(../grafika/obalky_male/portret4.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret4 span.active {
-	background-image: url(../grafika/obalky_male/portret4.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret4 a:hover span {
-	background-image: url(../grafika/obalky_male/portret4.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#portret5 span {
-	background-image: url(../grafika/obalky_male/portret5.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret5 span.active {
-	background-image: url(../grafika/obalky_male/portret5.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret5 a:hover span {
-	background-image: url(../grafika/obalky_male/portret5.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#portret6 span {
-	background-image: url(../grafika/obalky_male/portret6.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret6 span.active {
-	background-image: url(../grafika/obalky_male/portret6.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret6 a:hover span {
-	background-image: url(../grafika/obalky_male/portret6.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#portret7 span {
-	background-image: url(../grafika/obalky_male/portret7.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret7 span.active {
-	background-image: url(../grafika/obalky_male/portret7.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#portret7 a:hover span {
-	background-image: url(../grafika/obalky_male/portret7.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#dvaOrechy span {
-	background-image: url(../grafika/obalky_male/2orechy.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#dvaOrechy span.active {
-	background-image: url(../grafika/obalky_male/2orechy.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#dvaOrechy a:hover span {
-	background-image: url(../grafika/obalky_male/2orechy.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#dvaOrechy2 span {
-	background-image: url(../grafika/obalky_male/2orechy2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#dvaOrechy2 span.active {
-	background-image: url(../grafika/obalky_male/2orechy2.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#dvaOrechy2 a:hover span {
-	background-image: url(../grafika/obalky_male/2orechy2.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#dvaOrechy3 span {
-	background-image: url(../grafika/obalky_male/2orechy3.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#dvaOrechy3 span.active {
-	background-image: url(../grafika/obalky_male/2orechy3.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#dvaOrechy3 a:hover span {
-	background-image: url(../grafika/obalky_male/2orechy3.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#polsko span {
-	background-image: url(../grafika/obalky_male/polsko.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#polsko span.active {
-	background-image: url(../grafika/obalky_male/polsko.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#polsko a:hover span {
-	background-image: url(../grafika/obalky_male/polsko.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#cernaPerla span {
-	background-image: url(../grafika/obalky_male/cerna-perla.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cernaPerla span.active {
-	background-image: url(../grafika/obalky_male/cerna-perla.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#cernaPerla a:hover span {
-	background-image: url(../grafika/obalky_male/cerna-perla.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-#kosiSrdce span {
-	background-image: url(../grafika/obalky_male/kosi-srdce.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#kosiSrdce span.active {
-	background-image: url(../grafika/obalky_male/kosi-srdce.gif);
-	background-repeat: no-repeat;
-	background-position: left top;
-}
-#kosiSrdce a:hover span {
-	background-image: url(../grafika/obalky_male/kosi-srdce.gif);
-	background-repeat: no-repeat;
-	background-position: right top;
-}
-.noscreen {
-	display: none;
-}
-.cernyText {
-	color: #000000;
-}
-.dolniOkraj {
-	margin-bottom: 10px;
-}
-.noBorder {
+#galerie a:hover, #galerieIndex a:hover, #nahled a:hover {
+	transform: scale(1.05);
+	box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+	background: none;
+	text-decoration: none;
+}
+
+#galerie span, #galerieIndex span, #nahled span {
+	display: block;
+	width: 84px;
+	height: 84px;
+	z-index: 1;
 	border: none;
 }
-.popisek {
-	float: right;
-	width: 482px;
+
+/* Hover effect for sprites */
+#galerie a:hover span, #galerieIndex a:hover span, #nahled a:hover span {
+	background-position: right top !important;
 }
+
+/* List view for Books */
 .blokSeznamu {
-	float: left;
+	display: flex;
+	margin-bottom: 40px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #f0f0f0;
+	width: 100%;
 }
-.height94 {
-	height: 94px;
+
+#nahled {
+	list-style: none;
+	width: 100px;
+	margin-right: 30px;
+	flex-shrink: 0;
+	padding: 0;
 }
-.height282 {
-	height: 282px;
+
+.popisek {
+	flex-grow: 1;
 }
-.height376 {
-	height: 376px;
+
+.popisek h3 {
+	margin-top: 0;
+	font-size: 1.5rem;
 }
-.height272 {
-	height: 272px;
+
+/* Footer */
+#foot {
+	clear: both;
+	padding: 20px;
+	background: #fcfcfc;
+	border-top: 1px solid #eee;
 }
-.height84 {
-	height: 84px;
+
+#copy {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 0.85rem;
+	color: #999;
 }
-.height366 {
-	height: 366px;
+
+/* Popups */
+#window {
+	background: #000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
 }
-.height470 {
-	height: 470px;
+
+.noBorder { border: none; }
+
+/* Dynamic sizes reset */
+.height94, .height282, .height376, .height272, .height84, .height366, .height470, .height564, .height554 {
+	height: auto !important;
 }
-.height564 {
-	height: 564px;
+
+.noscreen {
+	display: none !important;
 }
-.height554 {
-	height: 554px;
-}
-#sobeSam span {
-	background-image: url(../grafika/obalky_male/sobe-sam.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
-}
-#sobeSam span.active {
-	background-image: url(../grafika/obalky_male/sobe-sam.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
+
+/* Book Backgrounds - Small Covers (Sprites) */
+#vSitu span { background: url(../grafika/obalky_male/v-situ.gif) no-repeat left top; }
+#mikado span { background: url(../grafika/obalky_male/mikado.gif) no-repeat left top; }
+#tenkratUTerfleru span { background: url(../grafika/obalky_male/tenkrat-u-terfleru.gif) no-repeat left top; }
+#borovyHaj span { background: url(../grafika/obalky_male/borovy-haj.gif) no-repeat left top; }
+#satnaAKlaster span { background: url(../grafika/obalky_male/satna-a-klaster.gif) no-repeat left top; }
+#uReky span { background: url(../grafika/obalky_male/u-reky.gif) no-repeat left top; }
+#pribehRytireVitka span { background: url(../grafika/obalky_male/rytir-vitek.gif) no-repeat left top; }
+#sBrasnouProPastyre span { background: url(../grafika/obalky_male/s-brasnou.gif) no-repeat left top; }
+#toBySeMiLibilo span { background: url(../grafika/obalky_male/to-by-se-mi-libilo.gif) no-repeat left top; }
+#tenVeliky span { background: url(../grafika/obalky_male/ten_veliky.gif) no-repeat left top; }
+#pilka span { background: url(../grafika/obalky_male/doktor-pilka-si-kope-hrob.gif) no-repeat left top; }
+#silenyFridrich span { background: url(../grafika/obalky_male/sileny_fridrich.gif) no-repeat left top; }
+#piva span { background: url(../grafika/obalky_male/2000000piv.gif) no-repeat left top; }
+#jazykemHaldy span { background: url(../grafika/obalky_male/jazykem_haldy.gif) no-repeat left top; }
+#jazykemHaldy2 span { background: url(../grafika/obalky_male/jazykem_haldy2.gif) no-repeat left top; }
+#cernaPena span { background: url(../grafika/obalky_male/cerna_pena.gif) no-repeat left top; }
+#cernaPena2 span { background: url(../grafika/obalky_male/cerna_pena2.gif) no-repeat left top; }
+#spratek span { background: url(../grafika/obalky_male/spratek.gif) no-repeat left top; }
+#perletovyDum span { background: url(../grafika/obalky_male/perletovy_dum.gif) no-repeat left top; }
+#halec span { background: url(../grafika/obalky_male/halec.gif) no-repeat left top; }
+#pohlednice span { background: url(../grafika/obalky_male/v_srdci.gif) no-repeat left top; }
+#lahve span { background: url(../grafika/obalky_male/lahve.gif) no-repeat left top; }
+#petrolej span { background: url(../grafika/obalky_male/petrolej.gif) no-repeat left top; }
+#poklad span { background: url(../grafika/obalky_male/poklad.gif) no-repeat left top; }
+#vymrstiSe span { background: url(../grafika/obalky_male/vymrsti_se_hned.gif) no-repeat left top; }
+#majak span { background: url(../grafika/obalky_male/majak.gif) no-repeat left top; }
+#potmechut span { background: url(../grafika/obalky_male/potmechut.gif) no-repeat left top; }
+#uhli span { background: url(../grafika/obalky_male/uhli.gif) no-repeat left top; }
+#chaloupka span { background: url(../grafika/obalky_male/pernikova-chaloupka.gif) no-repeat left top; }
+#potok span { background: url(../grafika/obalky_male/zlaty-potok.gif) no-repeat left top; }
+#plyn span { background: url(../grafika/obalky_male/plyn.gif) no-repeat left top; }
+#mestecko span { background: url(../grafika/obalky_male/mestecko.gif) no-repeat left top; }
+#dar span { background: url(../grafika/obalky_male/dar-luzru.gif) no-repeat left top; }
+#narozeniny span { background: url(../grafika/obalky_male/k-narozeninam.gif) no-repeat left top; }
+#pribehy span { background: url(../grafika/obalky_male/nektere-pribehy.gif) no-repeat left top; }
+#rybicka span { background: url(../grafika/obalky_male/rybicka.gif) no-repeat left top; }
+#rybicka2 span { background: url(../grafika/obalky_male/rybicka-planek.gif) no-repeat left top; }
+#prokleti span { background: url(../grafika/obalky_male/prokleti_na_basniky.gif) no-repeat left top; }
+#prokleti2 span { background: url(../grafika/obalky_male/prokleti_na_basniky2.gif) no-repeat left top; }
+#sedm span { background: url(../grafika/obalky_male/sedm.gif) no-repeat left top; }
+#belgie span { background: url(../grafika/obalky_male/antologie_belgie.gif) no-repeat left top; }
+#francie span { background: url(../grafika/obalky_male/antologie_francie.gif) no-repeat left top; }
+#elias span { background: url(../grafika/obalky_male/elias.gif) no-repeat left top; }
+#elias2 span { background: url(../grafika/obalky_male/elias2.gif) no-repeat left top; }
+#rusko span { background: url(../grafika/obalky_male/rusko.gif) no-repeat left top; }
+#modryKvet span { background: url(../grafika/obalky_male/modry_kvet.gif) no-repeat left top; }
+#sojky span { background: url(../grafika/obalky_male/sojky_v_hlave.gif) no-repeat left top; }
+#cmelak span { background: url(../grafika/obalky_male/cmelak_a_svet.gif) no-repeat left top; }
+#cmelak2 span { background: url(../grafika/obalky_male/cmelak_a_svet2.gif) no-repeat left top; }
+#cmelakCz span { background: url(../grafika/obalky_male/cmelak_a_svet_cz.gif) no-repeat left top; }
+#cmelakCz2 span { background: url(../grafika/obalky_male/cmelak_a_svet_cz2.gif) no-repeat left top; }
+#cmelakCz3 span { background: url(../grafika/obalky_male/cmelak_a_svet_cz3.gif) no-repeat left top; }
+#portret1 span { background: url(../grafika/obalky_male/portret.gif) no-repeat left top; }
+#portret2 span { background: url(../grafika/obalky_male/portret2.gif) no-repeat left top; }
+#portret3 span { background: url(../grafika/obalky_male/portret3.gif) no-repeat left top; }
+#portret4 span { background: url(../grafika/obalky_male/portret4.gif) no-repeat left top; }
+#portret5 span { background: url(../grafika/obalky_male/portret5.gif) no-repeat left top; }
+#portret6 span { background: url(../grafika/obalky_male/portret6.gif) no-repeat left top; }
+#portret7 span { background: url(../grafika/obalky_male/portret7.gif) no-repeat left top; }
+#dvaOrechy span { background: url(../grafika/obalky_male/2orechy.gif) no-repeat left top; }
+#dvaOrechy2 span { background: url(../grafika/obalky_male/2orechy2.gif) no-repeat left top; }
+#dvaOrechy3 span { background: url(../grafika/obalky_male/2orechy3.gif) no-repeat left top; }
+#polsko span { background: url(../grafika/obalky_male/polsko.gif) no-repeat left top; }
+#cernaPerla span { background: url(../grafika/obalky_male/cerna-perla.gif) no-repeat left top; }
+#kosiSrdce span { background: url(../grafika/obalky_male/kosi-srdce.gif) no-repeat left top; }
+
+/* Non-sprite or Special Handling */
+#sobeSam span { 
+	background: url(../grafika/obalky_male/sobe-sam.jpg) no-repeat center center / contain; 
 }
 #sobeSam a:hover span {
-	background-image: url(../grafika/obalky_male/sobe-sam.jpg);
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: contain;
+	background-position: center center !important;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+	.content-wrapper { flex-direction: column; }
+	#left { width: 100%; border-right: none; border-bottom: 1px solid #eee; }
+	#left li { text-align: center; }
+	#obsah, #obsahIndex { padding: 20px; }
 }

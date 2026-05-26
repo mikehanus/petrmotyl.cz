@@ -1252,3 +1252,21 @@ hr {
 .height554 {
 	height: 554px;
 }
+#sobeSam span {
+	background-image: url(../grafika/obalky_male/sobe-sam.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+#sobeSam span.active {
+	background-image: url(../grafika/obalky_male/sobe-sam.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+#sobeSam a:hover span {
+	background-image: url(../grafika/obalky_male/sobe-sam.jpg);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}

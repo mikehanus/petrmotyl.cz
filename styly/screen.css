@@ -371,3 +371,6 @@ a:hover {
 
 #skoricoveKramy span { background: url(../grafika/obalky_male/skoricove_kramy.png) no-repeat center center / contain; }
 #skoricoveKramy a:hover span { background-position: center center !important; }
+
+#kytky span { background: url(../grafika/obalky_male/kytky.jpg) no-repeat center center / contain; }
+#kytky a:hover span { background-position: center center !important; }

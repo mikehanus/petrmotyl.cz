@@ -369,8 +369,9 @@ a:hover {
 	background-position: center center !important;
 }
 
-#skoricoveKramy span { background: url(../grafika/obalky_male/skoricove_kramy.png) no-repeat center center / contain; }
-#skoricoveKramy a:hover span { background-position: center center !important; }
-
 #kytky span { background: url(../grafika/obalky_male/kytky.jpg) no-repeat center center / contain; }
+#naTresnovemDreve span { background: url(../grafika/tresnove_obalka.jpg) no-repeat center center / contain; }
+#naTresnovemDreve a:hover span { background-position: center center !important; }
+#skoricoveKramy span { background: url(../grafika/skoricove_obalka.jpg) no-repeat center center / contain; }
+#skoricoveKramy a:hover span { background-position: center center !important; }
 #kytky a:hover span { background-position: center center !important; }

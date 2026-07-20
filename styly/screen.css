@@ -109,8 +109,17 @@ h1 span {
 /* obsah */
 #obsah, #obsahIndex {
 	flex-grow: 1;
+	flex-shrink: 1;
+	min-width: 0;
 	padding: 40px;
 	min-height: 600px;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+#obsah img, #obsahIndex img {
+	max-width: 100%;
+	height: auto;
 }
 
 h2 {
@@ -132,6 +141,8 @@ p {
 	margin-bottom: 10px;
 	line-height: 1.8;
 	color: #444;
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 
 .cernyText {
@@ -141,6 +152,8 @@ p {
 a:link, a:visited {
 	color: #0066FF;
 	text-decoration: underline;
+	overflow-wrap: break-word;
+	word-break: break-all;
 }
 
 a:hover {
@@ -374,4 +387,6 @@ a:hover {
 #naTresnovemDreve a:hover span { background-position: center center !important; }
 #skoricoveKramy span { background: url(../grafika/skoricove_obalka.jpg) no-repeat center center / contain; }
 #skoricoveKramy a:hover span { background-position: center center !important; }
+#silenyFridrich span { background: url(../grafika/fridrich_obalka.jpg) no-repeat center center / contain; }
+#silenyFridrich a:hover span { background-position: center center !important; }
 #kytky a:hover span { background-position: center center !important; }

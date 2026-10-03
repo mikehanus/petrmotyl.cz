@@ -1,0 +1,23 @@
+# Jekyll configuration (GitHub Pages builds the site automatically on every push).
+# Article pages live in clanky/, list pages in seznamy/; both are published
+# at the site root under their original file names (e.g. /cerna_pena.htm).
+
+exclude:
+  - do_utf8.sh
+  - README.md
+
+defaults:
+  - scope:
+      path: "clanky"
+    values:
+      layout: clanek
+      permalink: /:basename:output_ext
+  - scope:
+      path: "seznamy"
+    values:
+      layout: seznam
+      permalink: /:basename:output_ext
+  - scope:
+      path: "index.htm"
+    values:
+      layout: uvod

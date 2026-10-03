@@ -1,0 +1,14 @@
+---
+layout: default
+---
+  <div id="obsahIndex">
+    {%- for sekce in page.sekce %}
+    <h3 class="noscreen">{{ sekce.nadpis }}</h3>
+    <ul id="galerieIndex">
+      {%- for n in sekce.polozky %}
+      {%- assign id = n.id | default: false %}
+      <li{% if id %} id="{{ id }}"{% endif %} title="{{ n.nazev | escape }}"><a href="{{ n.odkaz }}">{{ n.nazev | escape }}{% include obrazek.html n=n %}</a></li>
+      {%- endfor %}
+    </ul>
+    {%- endfor %}
+  </div>

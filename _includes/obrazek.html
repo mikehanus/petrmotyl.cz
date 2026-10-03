@@ -1,0 +1,6 @@
+{%- comment -%}
+The <span> inside a thumbnail link. Thumbnails of older entries come from sprites
+in styly/screen.css (matched by the item id); items added in the CMS set `obrazek`.
+{%- endcomment -%}
+{%- assign obrazek = include.n.obrazek | default: false -%}
+{%- if obrazek %}<span class="vlastniNahled" style="background-image: url('{{ obrazek | relative_url }}')"></span>{% else %}<span></span>{% endif -%}

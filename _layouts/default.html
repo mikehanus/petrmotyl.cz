@@ -1,0 +1,46 @@
+{%- comment -%} Empty optional fields from the CMS come through as "", so test them via `default`. {%- endcomment -%}
+{%- assign vychozi_titulek = "Petr Motýl - " | append: page.nadpis -%}
+{%- assign titulek = page.titulek | default: vychozi_titulek -%}
+{%- assign popis = page.popis | default: false -%}
+{%- assign klicova_slova = page.klicova_slova | default: false -%}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{%- if popis %}
+<meta name="Description" content="{{ popis | escape }}" />
+{%- endif %}
+{%- if klicova_slova %}
+<meta name="keywords" content="{{ klicova_slova | escape }}" />
+{%- endif %}
+<meta name="robots" content="all, follow"/>
+<meta name="author" content="Ladislav Krajča (www.zebry.cz)" />
+<meta name="copyright" content="Petr Motýl" />
+<link rel="shortcut icon" href="favicon.ico" />
+<link rel="stylesheet" href="styly/screen.css" type="text/css"  media="screen, projection" />
+<link rel="stylesheet" href="styly/print.css" type="text/css"  media="print" />
+<script src="styly/popup.js" type="text/javascript"></script>
+<title>{{ titulek | escape }}</title>
+</head>
+<body>
+<div id="main">
+  <h1><a href="index.htm" title="Domů">{{ titulek | escape }}<span></span></a></h1>
+  <div class="content-wrapper">
+  <div id="left">
+    <ul id="menu">
+      {%- for polozka in site.data.menu %}
+      {%- unless page.layout == "uvod" and polozka.odkaz == "index.htm" %}
+      <li><a href="{{ polozka.odkaz }}" title="{{ polozka.nazev | escape }}">{{ polozka.nazev }}</a></li>
+      {%- endunless %}
+      {%- endfor %}
+    </ul>
+  </div>
+{{ content }}
+  </div>
+  <div id="foot">
+    <hr />
+    <p id="copy">&copy; <a href="mailto:motylpetr@gmail.com" title="mailto:motylpetr@gmail.com">Petr Motýl</a> / design <a href="http://www.zebry.cz/" title="www.zebry.cz">Zebry</a></p>
+  </div>
+</div>
+</body>
+</html>

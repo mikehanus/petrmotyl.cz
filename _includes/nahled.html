@@ -1,0 +1,9 @@
+{%- comment -%}
+One thumbnail that opens a popup window (styly/popup.js).
+Parameter n: item with nazev, odkaz and optional id, sirka, vyska, obrazek.
+{%- endcomment -%}
+{%- assign n = include.n -%}
+{%- assign id = n.id | default: false -%}
+{%- assign sirka = n.sirka | default: false -%}
+<li{% if id %} id="{{ id }}"{% endif %} title="{{ n.nazev | escape }}"><a href="{{ n.odkaz }}"
+{%- if sirka %} onclick="MM_openBrWindow('{{ n.odkaz }}','{{ id | default: 'nahled' }}','width={{ sirka }},height={{ n.vyska | default: 400 }}');return false"{% endif %}>{{ n.nazev | escape }}{% include obrazek.html n=n %}</a></li>

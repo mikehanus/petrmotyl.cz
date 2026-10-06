@@ -390,3 +390,47 @@ a:hover {
 #silenyFridrich span { background: url(../grafika/fridrich_obalka.jpg) no-repeat center center / contain; }
 #silenyFridrich a:hover span { background-position: center center !important; }
 #kytky a:hover span { background-position: center center !important; }
+
+/* Article text written in the CMS editor (plain HTML without classes).
+   Reproduces the look of the former .cernyText paragraphs, centered image
+   blocks with captions, indented poems and dashed separators. */
+.text p { color: #222; }
+.text img {
+	display: block;
+	margin: 25px auto 28px;
+	max-width: 100%;
+	height: auto;
+	border: 1px solid #eee;
+}
+.text h6 {
+	margin: -13px 0 20px;
+	text-align: center;
+	font-size: smaller;
+	font-weight: normal;
+	color: #333;
+}
+.text h4 { margin: 10px 0; }
+.text blockquote {
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+.text blockquote p {
+	line-height: 1.5;
+	font-style: italic;
+}
+.text hr {
+	display: block;
+	margin: 20px 0;
+	border: 0;
+	border-top: 1px dashed #999;
+}
+.text ul, .text ol { margin: 0 0 10px 25px; }
+.text table { border-collapse: collapse; margin-bottom: 10px; }
+.text td, .text th { border: 1px solid #eee; padding: 4px 8px; }
+#obsah .blokSeznamu + h2 { margin-top: 82px; }
+
+/* Thumbnails added in the CMS (own image instead of a sprite in this file) */
+.vlastniNahled { background: no-repeat center center / contain; }
+#galerie a:hover span.vlastniNahled, #galerieIndex a:hover span.vlastniNahled, #nahled a:hover span.vlastniNahled {
+	background-position: center center !important;
+}

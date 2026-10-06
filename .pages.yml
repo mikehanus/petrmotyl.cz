@@ -1,0 +1,199 @@
+# Pages CMS (https://pagescms.org) – web editor for this site.
+# Every save is a commit to this repository; GitHub Pages then rebuilds the site.
+
+media:
+  input: grafika
+  output: /grafika
+  categories: [image]
+
+components:
+  nahled:
+    label: Náhled
+    type: object
+    fields:
+      - name: nazev
+        label: Popis
+        type: string
+        default: Obálka
+      - name: obrazek
+        label: Náhledový obrázek
+        description: Pro nově přidané položky. Starší položky mají náhled podle ID.
+        type: image
+      - name: odkaz
+        label: Co se otevře po kliknutí
+        description: Obrázek nebo stránka, např. /grafika/obalky_velke/nova_kniha.jpg
+        type: string
+      - name: sirka
+        label: Šířka okna (px)
+        type: number
+      - name: vyska
+        label: Výška okna (px)
+        type: number
+      - name: id
+        label: ID (technické)
+        description: Neměňte. Určuje náhled u starších položek.
+        type: string
+settings:
+  content:
+    merge: true
+
+content:
+  - name: clanky
+    label: Knihy a články
+    description: Stránky jednotlivých knih, sborníků, překladů a časopisů.
+    type: collection
+    path: clanky
+    filename: "{primary}.htm"
+    format: yaml-frontmatter
+    view:
+      primary: nadpis
+      fields: [nadpis]
+      sort: [nadpis]
+      default:
+        sort: nadpis
+        order: asc
+    fields:
+      - name: nadpis
+        label: Nadpis
+        type: string
+        required: true
+      - name: podnadpis
+        label: Podnadpis
+        description: Nepovinné. Krátký text pod nadpisem.
+        type: string
+      - name: galerie
+        label: Náhledy obrázků (obálky)
+        description: Malé náhledy nahoře na stránce; po kliknutí se otevře okno s obrázkem.
+        component: nahled
+        list: true
+      - name: body
+        label: Text stránky
+        description: "Tip: popisek pod obrázkem = styl „Heading 6“; báseň s odsazením a kurzívou = citace (Quote)."
+        type: rich-text
+        options:
+          format: html
+          path: grafika
+      - name: titulek
+        label: Titulek v záložce prohlížeče
+        description: Nepovinné. Když je prázdné, použije se „Petr Motýl - Nadpis“.
+        type: string
+      - name: popis
+        label: Popis pro vyhledávače
+        type: text
+      - name: klicova_slova
+        label: Klíčová slova pro vyhledávače
+        type: string
+
+  - name: seznamy
+    label: Seznamy (Knihy, Sborníky, Překlady…)
+    description: Přehledové stránky z menu. Nová kniha = nová položka v seznamu.
+    type: collection
+    path: seznamy
+    filename: "{primary}.htm"
+    format: yaml-frontmatter
+    view:
+      primary: nadpis
+      fields: [nadpis]
+    fields:
+      - name: nadpis
+        label: Nadpis stránky
+        type: string
+        required: true
+      - name: sekce
+        label: Části stránky
+        type: object
+        list: true
+        fields:
+          - name: nadpis
+            label: Nadpis části
+            type: string
+          - name: polozky
+            label: Položky
+            type: object
+            list: true
+            fields:
+              - name: nadpis
+                label: Název
+                type: string
+              - name: text
+                label: Popis
+                description: Obvykle druh knihy, vydavatel a odkaz „Detaily“ na stránku knihy (např. nova_kniha.htm).
+                type: rich-text
+                options:
+                  format: html
+                  path: grafika
+              - name: nahled
+                label: Náhled obálky
+                component: nahled
+          - name: pod_seznamem
+            label: Text pod seznamem
+            type: rich-text
+            options:
+              format: html
+      - name: titulek
+        label: Titulek v záložce prohlížeče
+        type: string
+      - name: popis
+        label: Popis pro vyhledávače
+        type: text
+      - name: klicova_slova
+        label: Klíčová slova pro vyhledávače
+        type: string
+
+  - name: uvod
+    label: Úvodní stránka
+    type: file
+    path: index.htm
+    format: yaml-frontmatter
+    fields:
+      - name: sekce
+        label: Části (Autor, Knihy, …)
+        type: object
+        list: true
+        fields:
+          - name: nadpis
+            label: Nadpis části
+            type: string
+          - name: polozky
+            label: Náhledy
+            type: object
+            list: true
+            fields:
+              - name: nazev
+                label: Název
+                type: string
+              - name: odkaz
+                label: Odkaz na stránku
+                description: např. nova_kniha.htm
+                type: string
+              - name: obrazek
+                label: Náhledový obrázek
+                description: Pro nově přidané položky. Starší položky mají náhled podle ID.
+                type: image
+              - name: id
+                label: ID (technické)
+                description: Neměňte. Určuje náhled u starších položek.
+                type: string
+      - name: titulek
+        label: Titulek v záložce prohlížeče
+        type: string
+      - name: popis
+        label: Popis pro vyhledávače
+        type: text
+      - name: klicova_slova
+        label: Klíčová slova pro vyhledávače
+        type: string
+
+  - name: menu
+    label: Menu
+    type: file
+    path: _data/menu.yml
+    format: yaml
+    list: true
+    fields:
+      - name: nazev
+        label: Text v menu
+        type: string
+      - name: odkaz
+        label: Odkaz
+        type: string

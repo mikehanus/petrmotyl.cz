@@ -1,0 +1,23 @@
+---
+layout: default
+---
+  <div id="obsah">
+    {%- for sekce in page.sekce %}
+    <h2>{{ sekce.nadpis }}</h2>
+    {%- for p in sekce.polozky %}
+    <div class="blokSeznamu">
+      <ul id="nahled">
+        {% include nahled.html n=p.nahled %}
+      </ul>
+      <div class="popisek text">
+        <h3>{{ p.nadpis }}</h3>
+        {{ p.text }}
+      </div>
+    </div>
+    {%- endfor %}
+    {%- assign pod_seznamem = sekce.pod_seznamem | default: false %}
+    {%- if pod_seznamem %}
+    <div class="text">{{ pod_seznamem }}</div>
+    {%- endif %}
+    {%- endfor %}
+  </div>

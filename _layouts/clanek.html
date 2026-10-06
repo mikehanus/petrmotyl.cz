@@ -1,0 +1,20 @@
+---
+layout: default
+---
+  <div id="obsah">
+    <h2>{{ page.nadpis }}</h2>
+    {%- assign podnadpis = page.podnadpis | default: false %}
+    {%- if podnadpis %}
+    <p>{{ podnadpis }}</p>
+    {%- endif %}
+    {%- if page.galerie.size > 0 %}
+    <ul id="galerie">
+      {%- for n in page.galerie %}
+      {% include nahled.html n=n %}
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+    <div class="text">
+{{ content }}
+    </div>
+  </div>

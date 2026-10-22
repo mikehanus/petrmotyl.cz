@@ -402,6 +402,18 @@ a:hover {
 	height: auto;
 	border: 1px solid #eee;
 }
+/* Image size presets: the editor can only set an image's ALT text, so the size
+   is written at its end ("Popis #w50") and _layouts/clanek.html turns it into
+   a class. The CSS width overrides any width="…" attribute on the image. */
+.text img.w25  { width: 25%; }
+.text img.w33  { width: 33%; }
+.text img.w50  { width: 50%; }
+.text img.w75  { width: 75%; }
+.text img.w100 { width: 100%; }
+@media (max-width: 600px) {
+	.text img.w25, .text img.w33 { width: 50%; }
+	.text img.w50, .text img.w75 { width: 100%; }
+}
 .text h6 {
 	margin: -13px 0 20px;
 	text-align: center;

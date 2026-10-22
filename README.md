@@ -22,10 +22,29 @@ Adresy stránek zůstávají stejné: `clanky/cerna_pena.htm` se zveřejní jako
 
 - Odstavec / nový řádek v básni: Enter / Shift+Enter.
 - Obrázek: vložit přes `/` → Image; zobrazí se vycentrovaný s rámečkem.
-  Šířku lze upravit v režimu zdrojového kódu (`width="400"`).
+  Velikost obrázku viz níže.
 - Popisek pod obrázkem: styl **Heading 6**.
 - Odsazená báseň kurzívou: **Quote** (citace).
 - Přerušovaná dělicí čára: **Divider** (horizontal rule).
+
+## Velikost obrázku
+
+1. V editoru klikněte na obrázek, objeví se lišta s tlačítkem **ALT**.
+2. Klikněte na **ALT** a na konec popisu obrázku připište značku velikosti, např.
+   `Petr Motýl a Ivan Wernisch #w50`.
+3. Potvrďte Enterem (nebo ✓) a stránku uložte.
+
+| Značka | Šířka (z šířky textu) | Na mobilu |
+|---|---|---|
+| `#w25` | čtvrtina | polovina |
+| `#w33` | třetina | polovina |
+| `#w50` | polovina | celá šířka |
+| `#w75` | tři čtvrtiny | celá šířka |
+| `#w100` | celá šířka | celá šířka |
+
+Značka musí být úplně na konci popisu. Na webu se nezobrazí, z popisu ji odstraní šablona.
+Bez značky má obrázek svou přirozenou velikost (nejvýše na šířku textu). Funguje to
+u stránek v *Knihy a články*.
 
 ## Nová kniha
 

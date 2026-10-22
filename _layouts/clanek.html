@@ -14,7 +14,17 @@ layout: default
       {%- endfor %}
     </ul>
     {%- endif %}
+    {%- comment -%}
+    Image size presets: the editor can only set an image's ALT text, so the size
+    is written at its end (e.g. "Petr Motýl #w50") and turned into a class here.
+    {%- endcomment -%}
+    {%- assign text = content -%}
+    {%- assign text = text | replace: ' #w25"', '" class="w25"' | replace: '#w25"', '" class="w25"' -%}
+    {%- assign text = text | replace: ' #w33"', '" class="w33"' | replace: '#w33"', '" class="w33"' -%}
+    {%- assign text = text | replace: ' #w50"', '" class="w50"' | replace: '#w50"', '" class="w50"' -%}
+    {%- assign text = text | replace: ' #w75"', '" class="w75"' | replace: '#w75"', '" class="w75"' -%}
+    {%- assign text = text | replace: ' #w100"', '" class="w100"' | replace: '#w100"', '" class="w100"' -%}
     <div class="text">
-{{ content }}
+{{ text }}
     </div>
   </div>
